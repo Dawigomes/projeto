@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* resetar os elementos pra tirar os padroes do navegador! */
+  box-sizing: border-box; /* medida do tamanho da caixa, pra ser
+ medida atravez da borda */
+}
+
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+    background-image: url(./assets/bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    */
+  /* como agrupar as informaçoes background, unica propiedade
+    (short rand ou atalho) */
+
+  /*brackground: color image repeat position */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /* height: 712px; a altura deve ser fluida para o rolamento da
+   pagina */
+  /*border: 1px solid red;*/
+  /*margin-right: auto;
+    margin-left: auto;
+    atalho abaixo*/
+  margin: 56px auto 0px; /* inclui todos os margin */
+  /*padding-top: 56px; /* outra forma de fazer é usar o 
+    margin-top: 56px;*/
+}
+
+/* profile*/
+#profile {
+  text-align: center;
+  /*o elemento pai permite que display inline tenha text-align pra
+    alinhar*/
+  padding: 24px;
+}
+
+#profile img {
+  /* display: block; caso nao queria usar o text-align, basta
+   trasnformar o elemento em block*/
+  width: 112px;
+  /* margin: auto; trasnformando o elemento em block vc pode usar
+   o margin auto*/
+}
+
+#profile p {
+  font-weight: 500; /* PESO como se fosse o negrito */
+  line-height: 24px; /* ALTURA DA LINHA */
+  /* font-size: 16px;  POR PADRAO OS SITES JA TEM 16 PIXELS*/
+  padding: 8px;
+}
+/* switch */
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%); /* pra cima ou pra baixo*/
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+/* links-lista */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0; /* em cima e embaixo 24px e 0 nas laterais*/
+}
+ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: background 0.2s;
+}
+
+/*pseudo-selector*/
+
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* Social-links*/
+#social-links {
+  display: flex; /* transforma em flex pra liberar o gap */
+  justify-content: center; /* ajusta eles ao meio*/
+  /* gap: 32px; o gap nao vai precisar pq ao adicionar o padding 16px no a ele mantem o espaço da bolinha e ativa o background quando passa o mouse em cima e mantem o 16px                   
+    /*O gap saiu de 16 pra 32, 16 do gap mas o espaço do propio icone */
+
+  padding: 24px 0; /* 24px em cima e em baixo e 0 nas laterais*/
+
+  font-size: 24px; /* De 40px desceu pra 24px, 24px é o tamanho do icone, 16 é o espaço em volta do icone q soma ao gap */
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+
+  /* n fica alinhado, entao adicionamos acima o display flex */
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
